@@ -1,0 +1,139 @@
+You should always plan out what needs to be done/ what to do before you do it.
+
+For example, when you click the Crate Prize button in the Prize form, where does the information get stored?
+
+Prize Model - what do we do with it?
+
+Psuedocode
+
+if (usingSQl == true)
+{
+	open database connection
+	save the data 
+	get back the updated model of the Prize information
+}
+
+if (usingTextFile == True)
+{
+	open text file 
+	generate an id
+	save the data
+}
+
+If we did this type of logic, we would have to enter this for every form created and for every type of connection created.
+
+In your C# program, you want to connect to a database to perform operations like sending, retrieving, and updating information. But since you might have different sources (like different databases, APIs, or even files), you want to ensure that your program can handle all of these sources in a consistent way.
+
+How Interfaces Help
+Consistency Across Sources: By using an interface, you can define a set of methods that every source must implement. For example, an interface might define methods like SendData, RetrieveData, and UpdateData. Each source (like a SQL database, a web API, or a file) would then implement these methods in its own way, but the rest of your program doesn't need to worry about how each source works internally.
+
+Flexibility to Add New Sources: If you later want to add another source (like a new type of database), you can do so easily. You just create a new class for that source and make sure it follows the same interface. Your program can then interact with the new source using the same methods, without needing to change any existing code.
+
+Simplified Code: With an interface, your program doesn’t need to know the details of each source. It just knows that any source following the interface can send, retrieve, and update information. This makes your code simpler and easier to manage.
+
+
+--------------------------------------------
+So it is best to start from scratch asking these questions?
+
+1. How do we get that connection information?
+
+2. How do we connect to 2 different data sources to do the same task?
+
+
+--------------------------------------------
+The plan is to use:
+
+Static class for data source information
+
+* Static class Explanation 
+
+Imagine you have a toy box where you keep all your favorite toys. Now, let’s say you have a special toy that everyone in your family can play with, but it never changes or gets lost. It's always there in the same spot, and everyone knows how to use it. In the world of programming with C#, this special toy is like a static class.
+
+What is a Static Class?
+Always There: A static class is like that special toy that’s always available. You don't need to create a new one to play with; it's just there, ready to use.
+
+**Same for Everyone: Just like everyone in your family plays with the same toy, everyone in your program uses the same static class. You don’t make copies of it. If you want to use the tools (methods or properties) inside the static class, you just go and use them directly.
+
+**No New Copies: Normally, when you want to use a toy (or class), you have to make your own version or copy of it. But with a static class, you don’t make any copies. You use it as it is, like the toy that stays in the same spot.
+
+Example:
+Imagine a toy box with some rules written on it, like "This is how you share toys," or "This is the best way to play." These rules don’t belong to any one toy; they’re just there for everyone to use. In programming, these rules are like the methods (functions) inside a static class.
+
+	static class MathHelper
+	{
+		public static int Add(int a, int b)
+		{
+			return a + b;
+		}
+	}
+
+**MathHelper: This is your static class, like that toy box with the rules.
+**Add Method: This is a rule that everyone can follow to add two numbers together. You don’t need to make a new copy of MathHelper to use the Add method. You just call it like this: MathHelper.Add(3, 5).
+
+Why Use a Static Class?
+**No Need for Copies: Since everyone uses the same rules or methods, you don’t need to make a new toy (or object) each time.
+**Organized and Handy: It keeps useful rules or methods in one place where everyone can easily find them.
+
+So, a static class in C# is like a special toy that’s always available for everyone, doesn’t need to be copied, and contains useful tools or rules that can be used by everyone in your program.
+
+----------------------------------
+Interface for data sources
+
+What is an Interface?
+Imagine you have different kinds of toys: a toy car, a toy robot, and a toy airplane. Each of these toys is different, but they all have something in common—they all have a way to move.
+
+Now, think of an interface as a list of things that each of these toys should be able to do. In this case, the list says, "Every toy must be able to move." But the list doesn’t care how the toy moves, just that it can.
+
+How Does It Work?
+**List of Rules: An interface is like that list of rules. It doesn’t tell the toys exactly how to move (whether they should drive, fly, or walk); it just says they have to be able to move.
+
+**Different Toys, Same Rules: Even though a toy car, a toy robot, and a toy airplane move in different ways, they all agree to follow the same rule: "I can move." Each toy decides how it will follow that rule on its own.
+
+Example:
+Let’s imagine the rule list is called IMovable, and it says that anything using this list must have a "Move" function.
+
+		interface IMovable
+		{
+			void Move();
+		}
+		**IMovable: This is your interface, the list of rules.
+		**Move: This is the rule that says, "Whatever uses this interface must be able to move."
+
+
+Now, let’s see how different toys (classes) follow that rule:
+
+		class ToyCar : IMovable
+		{
+			public void Move()
+			{
+				Console.WriteLine("The car drives forward!");
+			}
+		}
+
+		class ToyRobot : IMovable
+		{
+			public void Move()
+			{
+				Console.WriteLine("The robot walks!");
+			}
+		}
+
+		class ToyAirplane : IMovable
+		{
+			public void Move()
+			{
+				Console.WriteLine("The airplane flies!");
+			}
+		}
+		**ToyCar, ToyRobot, ToyAirplane: These are your different toys, each one following the IMovable interface (the list of rules).
+		**Move Method: Each toy follows the rule in its own way. The car drives, the robot walks, and the airplane flies.
+
+Why Use an Interface? 
+
+**Consistency: It makes sure that all the different toys can do the same basic thing (like move) even if they do it in their own way.
+
+**Flexibility: Each toy is free to decide how to follow the rules, which makes them unique but still able to fit into the same playtime (program).
+
+
+Summary:
+An interface in C# is like a list of rules that different things (like toys) agree to follow. It doesn’t tell them exactly how to follow the rules, just that they must. Each thing (or class) then decides on its own how to follow those rules, making them work together in a consistent way while still being different.

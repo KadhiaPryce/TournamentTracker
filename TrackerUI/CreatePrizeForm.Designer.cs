@@ -183,7 +183,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(646, 547);
+            this.ClientSize = new System.Drawing.Size(669, 547);
             this.Controls.Add(this.orLabel);
             this.Controls.Add(this.prizePercentageTextBox);
             this.Controls.Add(this.prizePercentageLabel);

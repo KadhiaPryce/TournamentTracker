@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreatePrizeForm));
             this.createPrizeLabel = new System.Windows.Forms.Label();
             this.createPrizeButton = new System.Windows.Forms.Button();
-            this.placeNumberTextBox = new System.Windows.Forms.TextBox();
-            this.placeNumberLabel = new System.Windows.Forms.Label();
+            this.placeNumberValueTextBox = new System.Windows.Forms.TextBox();
+            this.placeNumberValueLabel = new System.Windows.Forms.Label();
             this.placeNameTextBox = new System.Windows.Forms.TextBox();
             this.placeNameLabel = new System.Windows.Forms.Label();
             this.prizeAmountTexbox = new System.Windows.Forms.TextBox();
@@ -71,31 +71,32 @@
             this.createPrizeButton.TabIndex = 57;
             this.createPrizeButton.Text = "Create Prize";
             this.createPrizeButton.UseVisualStyleBackColor = false;
+            this.createPrizeButton.Click += new System.EventHandler(this.createPrizeButton_Click);
             // 
-            // placeNumberTextBox
+            // placeNumberValueTextBox
             // 
-            this.placeNumberTextBox.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placeNumberTextBox.Location = new System.Drawing.Point(291, 123);
-            this.placeNumberTextBox.Name = "placeNumberTextBox";
-            this.placeNumberTextBox.Size = new System.Drawing.Size(302, 47);
-            this.placeNumberTextBox.TabIndex = 50;
-            this.placeNumberTextBox.Text = "0";
-            this.placeNumberTextBox.TextChanged += new System.EventHandler(this.placeNameTextBox_TextChanged);
+            this.placeNumberValueTextBox.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.placeNumberValueTextBox.Location = new System.Drawing.Point(291, 123);
+            this.placeNumberValueTextBox.Name = "placeNumberValueTextBox";
+            this.placeNumberValueTextBox.Size = new System.Drawing.Size(302, 47);
+            this.placeNumberValueTextBox.TabIndex = 50;
+            this.placeNumberValueTextBox.Text = "0";
+            this.placeNumberValueTextBox.TextChanged += new System.EventHandler(this.placeNameTextBox_TextChanged);
             // 
-            // placeNumberLabel
+            // placeNumberValueLabel
             // 
-            this.placeNumberLabel.AutoSize = true;
-            this.placeNumberLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.placeNumberLabel.CausesValidation = false;
-            this.placeNumberLabel.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placeNumberLabel.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.placeNumberLabel.Location = new System.Drawing.Point(57, 126);
-            this.placeNumberLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.placeNumberLabel.Name = "placeNumberLabel";
-            this.placeNumberLabel.Size = new System.Drawing.Size(195, 41);
-            this.placeNumberLabel.TabIndex = 49;
-            this.placeNumberLabel.Text = "Place Number";
-            this.placeNumberLabel.Click += new System.EventHandler(this.placeNumberLabel_Click);
+            this.placeNumberValueLabel.AutoSize = true;
+            this.placeNumberValueLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.placeNumberValueLabel.CausesValidation = false;
+            this.placeNumberValueLabel.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.placeNumberValueLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.placeNumberValueLabel.Location = new System.Drawing.Point(57, 126);
+            this.placeNumberValueLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.placeNumberValueLabel.Name = "placeNumberValueLabel";
+            this.placeNumberValueLabel.Size = new System.Drawing.Size(195, 41);
+            this.placeNumberValueLabel.TabIndex = 49;
+            this.placeNumberValueLabel.Text = "Place Number";
+            this.placeNumberValueLabel.Click += new System.EventHandler(this.placeNumberLabel_Click);
             // 
             // placeNameTextBox
             // 
@@ -192,8 +193,8 @@
             this.Controls.Add(this.placeNameTextBox);
             this.Controls.Add(this.placeNameLabel);
             this.Controls.Add(this.createPrizeButton);
-            this.Controls.Add(this.placeNumberTextBox);
-            this.Controls.Add(this.placeNumberLabel);
+            this.Controls.Add(this.placeNumberValueTextBox);
+            this.Controls.Add(this.placeNumberValueLabel);
             this.Controls.Add(this.createPrizeLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -209,8 +210,8 @@
 
         private System.Windows.Forms.Label createPrizeLabel;
         private System.Windows.Forms.Button createPrizeButton;
-        private System.Windows.Forms.TextBox placeNumberTextBox;
-        private System.Windows.Forms.Label placeNumberLabel;
+        private System.Windows.Forms.TextBox placeNumberValueTextBox;
+        private System.Windows.Forms.Label placeNumberValueLabel;
         private System.Windows.Forms.TextBox placeNameTextBox;
         private System.Windows.Forms.Label placeNameLabel;
         private System.Windows.Forms.TextBox prizeAmountTexbox;

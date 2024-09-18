@@ -45,16 +45,25 @@ namespace TrackerUI
                 PrizeModel model = new PrizeModel(
                     placeNameTextBox.Text,
                     placeNumberValueTextBox.Text,
-                    prizeAmountTextBox.Text, 
+                    prizeAmountTextBox.Text,
                     prizePercentageTextBox.Text);
 
                 foreach (I_Database_Connection database in GlobalConfiguration.Connections)
                 {
                     database.CreatePrize(model);
-                     
                 }
 
+                placeNameTextBox.Text = " ";
+                placeNumberValueTextBox.Text = "0";
+                prizeAmountTextBox.Text = "0";
+                prizePercentageTextBox.Text = "0";
             }
+            else
+            {
+                MessageBox.Show("Invalid Information has been detected in this form. " +
+                    "\nPlease check your entries and try again.");
+            }
+
 
         }
 

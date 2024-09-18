@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrackerLibrary;
 
 namespace TrackerUI
 {
@@ -39,6 +40,21 @@ namespace TrackerUI
 
         private void createPrizeButton_Click(object sender, EventArgs e)
         {
+            if (ValidateForm())
+            {
+                PrizeModel model = new PrizeModel(
+                    placeNameTextBox.Text,
+                    placeNumberValueTextBox.Text,
+                    prizeAmountTextBox.Text, 
+                    prizePercentageTextBox.Text);
+
+                foreach (I_Database_Connection database in GlobalConfiguration.Connections)
+                {
+                    database.CreatePrize(model);
+                     
+                }
+
+            }
 
         }
 
@@ -48,7 +64,42 @@ namespace TrackerUI
             int placeNumber = 0;
             bool placeNumberValidNumber = int.TryParse(placeNumberValueTextBox.Text, out placeNumber);
 
-           //
+            if (placeNumberValidNumber == false)
+            {
+                output = false;
+            }
+
+            if (placeNumber < 1)
+            {
+                output = false;
+            }
+
+            if (placeNameTextBox.Text.Length == 0)
+            {
+                output = false;
+            }
+
+            decimal prizeAmount = 0;
+            double prizePercentage = 0;
+
+            bool prizeAmountValid = decimal.TryParse(prizeAmountTextBox.Text, out prizeAmount);
+            bool prizePercentageValid = double.TryParse(prizePercentageTextBox.Text, out prizePercentage);
+
+            if (prizeAmountValid == false || prizePercentageValid == false)
+            {
+                output = false;
+            }
+
+            if (prizeAmount <= 0 && prizePercentage <= 0)
+            {
+                output = false;
+            }
+
+            if (prizePercentage < 0 || prizePercentage > 100)
+            {
+                output = false;
+            }
+
 
             return output;
         }
